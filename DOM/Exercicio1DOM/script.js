@@ -16,6 +16,13 @@ function alterarTexto() {
 
 // atv 3
 function alterarFundo() {
-    let fundo = document.querySelector("body");
-    fundo.style.backgroundColor = "blue";
+    let body = document.querySelector("body");
+    body.style.backgroundColor = "green";
+}
+
+// atv 4
+function adicionarClasse() {
+    titulo.classList.add("descricao");
+    let descricao = document.querySelector(".descricao");
+    descricao.style.color = "red";
 }
