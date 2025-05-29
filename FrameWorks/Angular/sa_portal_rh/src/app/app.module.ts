@@ -7,10 +7,11 @@ import { HeaderComponent } from './template/header/header.component';
 import { FooterComponent } from './template/footer/footer.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { InicioComponent } from './view/inicio/inicio.component';
-import { CurriculosComponent } from './view/curriculos/curriculos.component';
+import { CurriculoComponent } from './view/curriculo/curriculo.component';
 import { VagasComponent } from './view/vagas/vagas.component';
 import { HttpClientModule } from '@angular/common/http';
 import { PainelVagasComponent } from './view/painel-vagas/painel-vagas.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -18,15 +19,16 @@ import { PainelVagasComponent } from './view/painel-vagas/painel-vagas.component
     HeaderComponent,
     FooterComponent,
     InicioComponent,
-    CurriculosComponent,
+    CurriculoComponent,
     VagasComponent,
-    PainelVagasComponent
+    PainelVagasComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     NgbModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

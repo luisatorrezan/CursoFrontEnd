@@ -42,7 +42,7 @@ ToMap(): {[key:string]:any}{
 }
 
 //fromMap api -> obj
- fromMap(map:any):Vaga{
+ static fromMap(map:any):Vaga{
     return new Vaga(
       map.id,
       map.nome,
