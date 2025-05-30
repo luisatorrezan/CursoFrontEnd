@@ -1,24 +1,24 @@
 <h2>Cadastrar</h2>
 <form action="">
     <label>Id</label>
-    <input type="text" name="id" [ngModel]="vaga.id"> <br>
-    
+    <input type="text" name="id" [(ngModel)]="vaga.id"> <br>
+
     <label>Nome</label>
-    <input type="text" name="nome" [ngModel]="vaga.nome"> <br>
-    
+    <input type="text" name="nome" [(ngModel)]="vaga.nome"> <br>
+
     <label>Foto</label>
-    <input type="text" name="foto" [ngModel]="vaga.foto"> <br>
-    
+    <input type="text" name="foto" [(ngModel)]="vaga.foto"> <br>
+
     <label>Descrição</label>
-    <input type="text" name="id" [ngModel]="vaga.id"> <br>
-    
+    <input type="text" name="id" [(ngModel)]="vaga.id"> <br>
+
     <label>Salário</label>
-    <input type="text" name="descricao" [ngModel]="vaga.descricao"> <br>
-    
+    <input type="text" name="descricao" [(ngModel)]="vaga.descricao"> <br>
+
     <button type="button" (click)="cadastrar()">Cadastrar Vaga</button>
     <button type="button" (click)="atualizar(vaga.id)">Atualizar Vaga</button>
     <button type="button" (click)="excluir(vaga.id)">Excluir Vaga</button>
-    
+
 </form>
 
 <!-- tabela com as vagas já cadastradas -->
@@ -46,5 +46,21 @@
     </tbody>
   </table>
  </section>
+
+ <script>
+  document.querySelector("form").addEventListener("submit", function(event) {
+    const id = document.querySelector("input[name='id']").value.trim();
+    const nome = document.querySelector("input[name='nome']").value.trim();
+    const foto = document.querySelector("input[name='foto']").value.trim();
+    const descricao = document.querySelector("input[name='descricao']").value.trim();
+    const salario = document.querySelector("input[name='salario']").value.trim();
+
+    if (!id || !nome || !foto || !descricao || !salario) {
+      alert("Por favor, preencha todos os campos!");
+      event.preventDefault(); // Impede o envio do formulário
+    }
+  });
+</script>
+
 
  <div class="rodape"></div>

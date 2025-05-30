@@ -4,7 +4,7 @@ constructor(
   public cpf: number,
   public nome: string,
   public idade: number,
-  public formacao: string,
+  public formacao: string
 ){}
 
 ToMap(): {[key:string]:any}{

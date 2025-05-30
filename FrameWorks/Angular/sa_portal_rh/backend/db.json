@@ -34,13 +34,37 @@
       "foto": "foto5.webp",
       "descricao": "Trabalhar com Nuvem AWS",
       "salario": 8000
+    }
+
+  ],
+  "curriculos": [
+    {
+      "cpf": 12345678900,
+      "nome": "João da Silva",
+      "idade": 28,
+      "formacao": "Engenharia da Computação",
+      "id": "3705"
     },
     {
-      "id": 0,
-      "nome": "",
-      "foto": "",
-      "descricao": "",
-      "salario": 0
+      "cpf": 98765432100,
+      "nome": "Maria Oliveira",
+      "idade": 32,
+      "formacao": "Análise de Sistemas",
+      "id": "cc38"
+    },
+    {
+      "cpf": 11223344556,
+      "nome": "Carlos Pereira",
+      "idade": 25,
+      "formacao": "Ciência da Computação",
+      "id": "42c2"
+    },
+    {
+      "cpf": 99887766554,
+      "nome": "Ana Souza",
+      "idade": 30,
+      "formacao": "Sistemas de Informação",
+      "id": "254c"
     }
   ]
 }

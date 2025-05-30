@@ -4,11 +4,11 @@ import { CurriculoService } from 'src/app/service/curriculo.service';
 
 @Component({
   selector: 'app-curriculos',
-  templateUrl: './curriculos.component.html',
-  styleUrls: ['./curriculos.component.scss']
+  templateUrl: './curriculo.component.html',
+  styleUrls: ['./curriculo.component.scss']
 })
 export class CurriculosComponent {
-  public curriculo: Curriculo[] = [];
+  public curriculos: Curriculo[] = [];
 
   constructor(private _curriculoService:CurriculoService){}
 
@@ -19,13 +19,13 @@ export class CurriculosComponent {
   listarCurriculo() {
     this._curriculoService.getCurriculo().subscribe(
       (retornaCurriculo) => {
-        this.curriculo = retornaCurriculo.map(
+        this.curriculos = retornaCurriculo.map(
           (item) => {
             return new Curriculo(
               item.cpf,
               item.nome,
               item.idade,
-              item.formacao,
+              item.formacao
             );
           }
         );

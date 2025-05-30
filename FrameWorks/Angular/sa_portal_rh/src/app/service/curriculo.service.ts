@@ -8,6 +8,7 @@ import { Curriculo } from '../models/curriculo.model';
   providedIn: 'root'
 })
 export class CurriculoService {
+  
   //atributo
   private apiUrl = "http://localhost:3007/curriculo"; //caminho da api
   
@@ -32,7 +33,7 @@ export class CurriculoService {
   }
 
   //delete - delete
-  removerVaga(id: any): Observable<Curriculo[]>{
+  removerCurriculo(id: number): Observable<Curriculo[]>{
     const urlDeletar = `${this.apiUrl}/${id}`;
     return this.http.delete<Curriculo[]>(urlDeletar);
   }
