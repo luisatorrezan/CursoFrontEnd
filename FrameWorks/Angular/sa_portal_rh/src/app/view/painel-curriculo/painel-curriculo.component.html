@@ -1,19 +1,27 @@
 <h2>Cadastrar</h2>
-<form>
+<form #curriculoForm="ngForm">
   <label>CPF</label>
-  <input type="text" name="cpf" [(ngModel)]="curriculo.cpf" ngModel> <br>
+  <input type="text" name="cpf" [(ngModel)]="curriculo.cpf" #cpf="ngModel" required>
+  <div *ngIf="cpf.invalid && cpf.touched" style="color:red;">CPF é obrigatório.</div>
+  <br>
 
   <label>Nome</label>
-  <input type="text" name="nome" [(ngModel)]="curriculo.nome" ngModel> <br>
+  <input type="text" name="nome" [(ngModel)]="curriculo.nome" #nome="ngModel" required>
+  <div *ngIf="nome.invalid && nome.touched" style="color:red;">Nome é obrigatório.</div>
+  <br>
 
   <label>Idade</label>
-  <input type="text" name="idade" [(ngModel)]="curriculo.idade" ngModel> <br>
+  <input type="text" name="idade" [(ngModel)]="curriculo.idade" #idade="ngModel" required>
+  <div *ngIf="idade.invalid && idade.touched" style="color:red;">Idade é obrigatória.</div>
+  <br>
 
   <label>Formação</label>
-  <input type="text" name="formacao" [(ngModel)]="curriculo.formacao" ngModel> <br>
+  <input type="text" name="formacao" [(ngModel)]="curriculo.formacao" #formacao="ngModel" required>
+  <div *ngIf="formacao.invalid && formacao.touched" style="color:red;">Formação é obrigatória.</div>
+  <br>
 
-  <button type="button" (click)="cadastrar()">Cadastrar Currículo</button>
-  <button type="button" (click)="atualizar(curriculo.cpf)">Atualizar Currículo</button>
+  <button type="button" (click)="cadastrar()" [disabled]="curriculoForm.invalid">Cadastrar Currículo</button>
+  <button type="button" (click)="atualizar(curriculo.cpf)" [disabled]="curriculoForm.invalid">Atualizar Currículo</button>
   <button type="button" (click)="excluir(curriculo.cpf)">Excluir Currículo</button>
 </form>
 
@@ -36,7 +44,8 @@
         <td>{{ curriculo.idade }}</td>
         <td>{{ curriculo.formacao }}</td>
         <td>
-          <button class="btn-listar" type="button" (click)="listarCurriculoUnico(curriculo)">Editar</button>
+          <button class="btn-listar" type="button" (click)="excluir(curriculo.id)">deletar</button>
+          <button class="btn-listar" type="button" (click)="atualizar(curriculo.id)">Editar</button>
         </td>
       </tr>
     </tbody>

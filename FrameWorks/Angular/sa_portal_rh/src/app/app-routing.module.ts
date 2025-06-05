@@ -8,7 +8,7 @@ import { PainelCurriculoComponent } from './view/painel-curriculo/painel-curricu
 
 const routes: Routes = [
   {path: "", component: InicioComponent},
-  {path: "curriculo", component: CurriculosComponent},
+  {path: "curriculos", component: CurriculosComponent},
   {path: "vagas", component: VagasComponent},
   {path: "vaga-listar", component: PainelVagasComponent},
   {path: "curriculo-listar", component: PainelCurriculoComponent}

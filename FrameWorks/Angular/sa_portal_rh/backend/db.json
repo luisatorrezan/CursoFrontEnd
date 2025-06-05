@@ -1,13 +1,6 @@
 {
   "vagas": [
     {
-      "id": "1",
-      "nome": "Desenvolver FrontEnd Jr",
-      "foto": "foto1.webp",
-      "descricao": "Trabalhar com HTML, CSS e JS",
-      "salario": 4000
-    },
-    {
       "id": "2",
       "nome": "Desenvolver BackEnd Pleno",
       "foto": "foto2.webp",
@@ -35,16 +28,8 @@
       "descricao": "Trabalhar com Nuvem AWS",
       "salario": 8000
     }
-
   ],
   "curriculos": [
-    {
-      "cpf": 12345678900,
-      "nome": "João da Silva",
-      "idade": 28,
-      "formacao": "Engenharia da Computação",
-      "id": "3705"
-    },
     {
       "cpf": 98765432100,
       "nome": "Maria Oliveira",
@@ -65,6 +50,20 @@
       "idade": 30,
       "formacao": "Sistemas de Informação",
       "id": "254c"
+    },
+    {
+      "id": "cf43",
+      "cpf": "48456684830",
+      "nome": "Luisa Torrezan Molina",
+      "idade": "17",
+      "formacao": "Médica"
+    },
+    {
+      "id": "5e85",
+      "cpf": "12345678910",
+      "nome": "Lucas Almeida",
+      "idade": "25",
+      "formacao": "Arquitetura e Urbanismo"
     }
   ]
 }

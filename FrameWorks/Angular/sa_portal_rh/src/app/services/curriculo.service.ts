@@ -8,10 +8,10 @@ import { Curriculo } from '../models/curriculo.model';
   providedIn: 'root'
 })
 export class CurriculoService {
-  
+
   //atributo
-  private apiUrl = "http://localhost:3007/curriculo"; //caminho da api
-  
+  private apiUrl = "http://localhost:3007/curriculos"; //caminho da api
+
   constructor(private http: HttpClient) { }
 
   //métodos de conexão com a api

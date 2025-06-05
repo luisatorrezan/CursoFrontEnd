@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Curriculo } from 'src/app/models/curriculo.model';
-import { CurriculoService } from 'src/app/service/curriculo.service';
+import { CurriculoService } from 'src/app/services/curriculo.service';
 
 @Component({
   selector: 'app-curriculos',
@@ -22,6 +22,7 @@ export class CurriculosComponent {
         this.curriculos = retornaCurriculo.map(
           (item) => {
             return new Curriculo(
+              item.id,
               item.cpf,
               item.nome,
               item.idade,
