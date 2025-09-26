@@ -1,48 +1,46 @@
-import mongoose, { Document, Schema } from "mongoose";
-import bcrypt from "bcryptjs";
+//Modelo de Criação de Usuário com Bcrypt
 
-export interface Usuario extends Document{
-    nome: string,
-    email: string,
-    senha?: string, //pode ser nulo
-    comparePassword(userPassword:string):Promise<boolean>;
+import mongoose, { Document, Model, Schema } from "mongoose";
+import bcrypt from "bcrypt";
+
+export interface IUsuario extends Document{
+    _id:string; //vou precisar do _id no view // evita erro no código
+    username: string;
+    password?:string; // que pode ser nulo ( nao vou retonar a senha)
+    tipo: string;
+    comparePassword(userPassword:string): Promise<boolean>;
 }
 
-const UsuarioSchema: Schema<Usuario> = new Schema({
-    nome: { 
-        type: String, 
-        required:[true, "O título é obrigatório"],
-        trim: true,
-    },
-    email: { 
-        type: String, 
-        required: true, 
-        unique: true 
-    },
-    senha: { 
-        type: String, 
-        required: true 
-    },
+//criaração do SCHEMa do MongoDB (construtor)
+
+const UsuarioSchema: Schema<IUsuario> = new Schema({
+    username:{type:String, required:true, unique:true},
+    password:{type:String, required:true, select:false},
+    tipo:{type: String, enum:["tecnico","gerente","admin"],required:true}
+    //select impede que a senha retorne por padrão
 });
 
-//middleware para hashear a senha
-UsuarioSchema.pre<Usuario>("save", async function (next){
-    if(!this.isModified("senha") || !this.senha) return next();
+//Middleware para hashear a senha
+//serve para criptografar a senha quando for armazenar u usuário no BD
+UsuarioSchema.pre<IUsuario>('save', async function (next){
+    if(!this.isModified('password') || !this.password) return next();
     try {
         const salt = await bcrypt.genSalt(10);
-        this.senha = await bcrypt.hash(this.senha, salt);
+        this.password = await bcrypt.hash(this.password, salt);
         next();
     } catch (error:any) {
         next(error);
     }
 })
 
-//método para comparar a senha
-UsuarioSchema.methods.comparePassword = async function(userPassword: string): Promise<boolean>{
-    return bcrypt.compare(userPassword, this.senha || "");
+//método para comparar senha
+//quando o usuário for fazer o login (compara a senha digitada e criptografasda com a senha criptografada do banco)
+UsuarioSchema.methods.comparePassword = function (userPassword:string):Promise<boolean>{
+    return bcrypt.compare(userPassword, this.password);
 }
 
-const UsuarioModel = mongoose.model<Usuario>("Usuario", UsuarioSchema);
+//to e from
+const Usuario: Model<IUsuario> = mongoose.models.Usuario || mongoose.model<IUsuario>("Usuario", UsuarioSchema);
 
-export default UsuarioModel;
-    
+export default Usuario;
+

@@ -1,28 +1,29 @@
-import mongoose, { Document, Schema } from "mongoose";
+//classe para equipamentos
 
-export interface equipamentos extends Document{
-    nome: string,
-    descricao: string,
-    dataAquisicao: Date;
+import mongoose, { Document, Model, Schema } from "mongoose";
+
+// atributos da classe
+export interface IEquipamento extends Document{
+    _id: string;
+    modelo: string;
+    marca: string;
+    localizacao: string;
+    numSerie: string;
+    status: string;
 }
 
-const EquipamentoSchema: Schema<equipamentos> = new Schema({
-    nome: { 
-        type: String, 
-        required:[true, "O nome é obrigatório"],
-        trim: true,
-    },
-    descricao: { 
-        type: String, 
-        required: true, 
-        trim: true,
-    },
-    dataAquisicao: {    
-        type: Date,
-        required: true,
-    },
+//Schema da Classe ( Construtor)
+const EquipamentoSchema:Schema<IEquipamento> = new Schema({
+    modelo:{type:String, required:true},
+    marca:{type:String, required:true},
+    localizacao:{type:String, required:true},
+    numSerie:{type:String, required:true, unique: true},
+    status:{type: String, enum: ["ativo","inativo"], default: "ativo"}
 });
 
-const EquipamentoModel = mongoose.model<equipamentos>("Equipamento", EquipamentoSchema);
+// fromMap toMap
 
-export default EquipamentoModel;
+const Equipamento: Model<IEquipamento> = mongoose.models.Equipamento
+|| mongoose.model<IEquipamento>("Equipamento",EquipamentoSchema);
+
+export default Equipamento;
