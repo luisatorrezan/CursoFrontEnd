@@ -3,6 +3,7 @@
 import mongoose, { Document, Model, Schema } from "mongoose";
 import bcrypt from "bcrypt";
 
+
 export interface IUsuario extends Document{
     _id:string; //vou precisar do _id no view // evita erro no código
     username: string;

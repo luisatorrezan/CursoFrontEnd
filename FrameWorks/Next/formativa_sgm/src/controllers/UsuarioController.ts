@@ -1,6 +1,6 @@
 
 import connectMongo from "@/services/mongodb";
-import Usuario, { IUsuario } from "../model/usuario";
+import Usuario, { IUsuario } from "../models/Usuario";
 
 //listar todos os Usuários
 export const getUsuarios = async () => {
